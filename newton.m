@@ -9,6 +9,9 @@ function [x,iter,fval] = newton(fun,dfun,x0)
     %   - root of the function
     %   - number of iterations needed
     %   - function value at root
+    % Author: Samuel Hashem Zehi
+    % Lecture: Dynamic Macroeconomics with Numerics (SS21)
+    % Student ID: 12012285
     
     tol     = 1e-12;                    % tolerance for root finding
     maxiter = 150;                      % maximum number of iterations
@@ -16,7 +19,7 @@ function [x,iter,fval] = newton(fun,dfun,x0)
     x1gen   = @(x) x-fun(x)./dfun(x);   % create updater function
     x1      = x1gen(x0);                % create first updated point
     while abs(x0-x1) > tol && i < maxiter
-        % Calculate secant intersection point with x-axis:
+        % Calculate tangent intersection point with x-axis:
         xnew    = x1gen(x1);
         % Update the points for next iteration:
         x0      = x1;
