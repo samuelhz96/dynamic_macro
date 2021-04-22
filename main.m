@@ -60,22 +60,26 @@ abs(fzero(fun,x0) - newton(fun,dfun,x0)) <= 1e-12;
 % this appears to be the case
 
 
-% check if it works for other functions:
 
-% example: x^3; df = 3x^2; ddf = 6x
-% a bit of a bad example since we don't find a maximum but a saddle point
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Testing Newton algorithm for other functions %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Example 1: f=x^3; df = 3x^2; ddf = 6x
+% Note: a bit of a bad example since we don't find a maximum but a saddle point
 
 funThree = @(x) 3.*x.^2;
 dfunThree = @(x) 6.*x;
 
-[x,iter,fval] = newton(funThree,dfunThree,3);
+[x,iter,fval] = newton(funThree,dfunThree,3);   % apply Newton method
 % appears to work (but seems to need lots of iterations)
 
 
-% example: f(x) = 2x-x^4, df = 2-4x^3, ddf = -12x^2
+% Example 2: f(x) = 2x-x^4, df = 2-4x^3, ddf = -12x^2
 funX1 = @(x) 2-4.*x.^3;
 dfunX1 = @(x) -12.*x^2;
-[x,iter,fval] = newton(funX1,dfunX1,0.1);
+
+[x,iter,fval] = newton(funX1,dfunX1,0.1);       % apply Newton method
 % pretty close, so the function appears to work
 % not too many iterations as well
 
